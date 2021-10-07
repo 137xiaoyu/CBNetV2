@@ -21,16 +21,21 @@ import glob
 
 
 def parse_args():
-    cfg = ('configs/cbnet/' + 
-           'cascade_rcnn_cbv2_swin_large_patch4_window7_mstrain_480-800_adamw_3x_tzb.py')
+    # cfg = ('configs/cbnet/' + 
+    #        'cascade_rcnn_cbv2_swin_large_patch4_window7_mstrain_480-800_adamw_3x_tzb.py')
+    cfg = ('configs/cascade_rcnn/' + 
+           'cascade_rcnn_r101_fpn_20e_coco_tzb.py')
     
-    cfg_options = {'model.pretrained': 'swin_large_patch4_window12_384_22k.pth',
-                   'model.backbone.use_checkpoint': 'True'}
+    # cfg_options = {'model.pretrained': 'swin_large_patch4_window12_384_22k.pth',
+    #                'model.backbone.use_checkpoint': 'True'}
+    cfg_options = None
     
     resume_file = None
     # resume_file = ('work_dirs_tzb/' + 
-    #                'cascade_rcnn_swin_large_patch4_window12_mstrain_480-800_giou_4conv1f_adamw_3x_coco_001/' + 
+    #                'cascade_rcnn_cbv2_swin_large_patch4_window7_mstrain_480-800_adamw_3x_tzb_003/' + 
     #                'epoch_100.pth')
+    
+    no_validate = False
     
     work_dir = 'work_dirs_tzb/' + cfg.split('/')[-1].split('.')[0]
     dirs = sorted(glob.glob(f'{work_dir}*'))
@@ -49,6 +54,7 @@ def parse_args():
     parser.add_argument(
         '--no-validate',
         action='store_true',
+        default=no_validate,
         help='whether not to evaluate the checkpoint during training')
     group_gpus = parser.add_mutually_exclusive_group()
     group_gpus.add_argument(
