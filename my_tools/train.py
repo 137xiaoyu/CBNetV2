@@ -24,7 +24,7 @@ def parse_args():
     # cfg = ('configs/cbnet/' + 
     #        'cascade_rcnn_cbv2_swin_large_patch4_window7_mstrain_480-800_adamw_3x_tzb.py')
     cfg = ('configs/cascade_rcnn/' + 
-           'cascade_rcnn_r101_fpn_20e_coco_tzb.py')
+           'cascade_rcnn_r50_fpn_mstrain_20e_coco_tzb.py')
     
     # cfg_options = {'model.pretrained': 'swin_large_patch4_window12_384_22k.pth',
     #                'model.backbone.use_checkpoint': 'True'}
